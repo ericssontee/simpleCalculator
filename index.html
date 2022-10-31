@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://allfont.net/allfont.css?fonts=digital-7" rel="stylesheet" type="text/css" />
+    <title>Simple Calculator</title>
+</head>
+
+<body>
+    <div class="calculator">
+        <div class="rectangle">
+            <input class="textbox" id="textbox" readonly>
+            <div class="row">
+                <button type="button" onclick="getNumber(7)" class="button column">7</button>
+                <button type="button" onclick="getNumber(8)" class="button column">8</button>
+                <button type="button" onclick="getNumber(9)" class="button column">9</button>
+                <button type="button" onclick="getOperator('/')" class="button column">/</button>
+            </div>
+            <div class="row">
+                <button type="button" onclick="getNumber(4)" class="button column">4</button>
+                <button type="button" onclick="getNumber(5)" class="button column">5</button>
+                <button type="button" onclick="getNumber(6)" class="button column">6</button>
+                <button type="button" onclick="getOperator('*')" class="button column">x</button>
+            </div>
+            <div class="row">
+                <button type="button" onclick="getNumber(1)" class="button column">1</button>
+                <button type="button" onclick="getNumber(2)" class="button column">2</button>
+                <button type="button" onclick="getNumber(3)" class="button column">3</button>
+                <button type="button" onclick="getOperator('-')" class="button column">-</button>
+            </div>
+            <div class="row">
+                <button type="button" onclick="getNumber(0)" class="button column">0</button>
+                <button type="button" onclick="getNumber('.')" class="button column">.</button>
+                <button type="button" onclick="getOperator('+')" class="button column">+</button>
+                <button type="button" onclick="calculate()" class="button column equal">=</button>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <footer class="footer">
+        <p>Author: Ericsson Tee<p>
+        <p>Last Updated: October 2022</p>
+        <a href="mailto:ericssontee.eb@gmail.com">ericssontee.eb@gmail.com</a>
+    </footer>
+
+    <script>
+        let textbox = document.getElementById("textbox");
+        let operator = '';
+        let num1 = '';
+        let num2 = '';
+
+        function getNumber(num) {
+            if (operator == '') {
+                num1 = '' + num1 + num;
+                textbox.value = num1;
+            } else {
+                num2 = '' + num2 + num;
+                textbox.value = num2;
+            }
+        }
+
+        function getOperator(op) {
+            operator = op;
+        }
+
+        function calculate() {
+            num1 = num1;
+            num2 = num2;
+            operator = operator
+            textbox.value = eval(`${num1}${operator}${num2}`);
+            operator = '';
+            num1 = '';
+            num2 = '';
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>
